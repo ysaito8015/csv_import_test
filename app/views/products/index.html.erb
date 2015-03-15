@@ -1,0 +1,27 @@
+<h1>商品一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+      <th>価格</th>
+      <th>発売日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |p| %>
+    <tr>
+      <td><%= p.id %></td>
+      <td><%= p.name %></td>
+      <td><%= p.price %></td>
+      <td><%= p.released_on %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_tag import_products_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "import" %>
+<% end %>
